@@ -6,7 +6,7 @@ from .stripfhx import stripfhx
 
 def main():
     mode, file1, file2 = gui.selectfiles()
-    if mode == 'Cancel':
+    if mode in (None, 'Cancel'):
         return
     workdir = selectfile.getpath(file1)
     if mode == 'Strip FHX':

@@ -7,6 +7,7 @@ def writeheader(filePath):
     
     for i in range(5, 0, -1):
         try:
+            print(output)
             with open(output, 'w', newline='') as csvfile:
                 HeaderWriter = csv.writer(csvfile, dialect='excel', delimiter=',')
                 HeaderWriter.writerow(headerList)

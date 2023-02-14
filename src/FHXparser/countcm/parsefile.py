@@ -1,6 +1,5 @@
 from . import handlecsv
 def countmodconf(fileName, outputPath, modulePrefix):
-    print('Processing: ' + fileName)
     with open(fileName, 'r', encoding='utf-16') as f:
         LC = EC = FB = PARA = ALARM = int()
         flag = 'mod'
@@ -51,7 +50,7 @@ def countmodconf(fileName, outputPath, modulePrefix):
                     else:
                         PARA += 1
             elif flag == 'done':
-                print(handlecsv.writecount(outputPath, [fileName, moduleName, LC, EC, FB, PARA, ALARM]))
+                handlecsv.writecount(outputPath, [fileName, moduleName, LC, EC, FB, PARA, ALARM])
                 # reset flag and counters
                 LC = EC = FB = PARA = ALARM = int()
                 flag = 'mod'
