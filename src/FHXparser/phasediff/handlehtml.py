@@ -8,5 +8,7 @@ def makehtml(file1, file2):
     return difflib.HtmlDiff().make_file(fromlines,tolines,file1,file2,context=True,numlines=1) 
 
 def writehtml(htmlstring, location):
-    with open(location + '/difftable.html','w') as f:
+    output = location + '/difftable.html'
+    with open(output,'w') as f:
         f.write(htmlstring)
+    return output

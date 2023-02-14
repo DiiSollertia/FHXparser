@@ -1,15 +1,18 @@
 #!/usr/bin/env python
 from . import selectfile
 from . import handlehtml
+from . import gui
+from .stripfhx import stripfhx
 
 def main():
-    print('Select 2 phase FHX files.')
-    file1 = selectfile.getfile()
-    file2 = selectfile.getfile()
+    mode, file1, file2 = gui.selectfiles()
+    if mode == 'Cancel':
+        return
     workdir = selectfile.getpath(file1)
+    if mode == 'Strip FHX':
+        stripfhx.stripfhx(file1, file2)
     html = handlehtml.makehtml(file1, file2)
-    handlehtml.writehtml(html, workdir)
-
+    gui.showhtml(handlehtml.writehtml(html, workdir))
 
 if __name__ == '__main__':
     main()
