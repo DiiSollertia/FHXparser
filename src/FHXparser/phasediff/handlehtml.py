@@ -8,6 +8,10 @@ def makehtml(params):
 
 def writehtml(htmlstring, location):
     output = location + '/difftable.html'
+
+    # limit table size
+    htmlstring = htmlstring.replace("</style>","\ttd{max-width: 40vw;overflow-x: auto;}\n\t</style",1)
+
     with open(output,'w') as f:
         f.write(htmlstring)
     return output
