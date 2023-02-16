@@ -8,6 +8,9 @@ def selectfiles():
         [sg.Checkbox('Strip Whitespace', key='-WHITE-')],
         [sg.Checkbox('Strip Braces', key='-BRACE-')],
         [sg.Checkbox('Ignore Line Drawing', key='-LINE-')],
+        [sg.Checkbox('Ignore User Comments', key='-COMMENT-')],
+        [sg.Checkbox('Ignore Embedded Composite Names', key='-EC-')],
+        [sg.Text('No. of Context Lines:'), sg.Input('0', enable_events=True, key='-CONTEXT-')]
     ]
     layout = [
         [sg.Text('Select 2 FHX files to compare.')],
@@ -24,6 +27,8 @@ def selectfiles():
             return None
         elif (event == 'Compare') and values[0] and values[1]:
             window.close()
+            if not values['-CONTEXT-']:
+                values['-CONTEXT-'] = 0
             return values
         elif event == '-EXPAND-':
             if flag == 0:
@@ -34,6 +39,8 @@ def selectfiles():
                 window['-FILTERS-'].update(visible=False)
                 window['-EXPAND-'].update(text='Show Filters')
                 flag = 0
+        elif event == '-CONTEXT-' and values['-CONTEXT-'] and values['-CONTEXT-'][-1] not in ('0123456789'):
+            window['-CONTEXT-'].update(values['-CONTEXT-'][:-1])
                 
 
 
