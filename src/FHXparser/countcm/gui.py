@@ -9,10 +9,12 @@ def selectfiles():
     while True:
         event, values = window.read()
         if event == 'Start Count':
-            if fnames:
-                window.close()
-                return fnames
-            continue
+            try:
+                if fnames:
+                    window.close()
+                    return fnames
+            except UnboundLocalError:
+                continue
         if event in (sg.WINDOW_CLOSED,'Cancel'):
             window.close()
             return
