@@ -11,12 +11,12 @@ def selectfiles():
     ]
     layout = [
         [sg.Text('Select 2 FHX files to compare.')],
-        [sg.Text('File 1'), sg.Input(disabled=True, size=(100,1), expand_x=True), sg.FileBrowse(file_types=[('DeltaV Config Files','*.fhx')])],
-        [sg.Text('File 2'), sg.Input(disabled=True, size=(100,1), expand_x=True), sg.FileBrowse(file_types=[('DeltaV Config Files','*.fhx')])],
+        [sg.Text('File 1'), sg.Input(disabled=True, size=(80,1), expand_x=True), sg.FileBrowse(file_types=[('DeltaV Config Files','*.fhx')])],
+        [sg.Text('File 2'), sg.Input(disabled=True, size=(80,1), expand_x=True), sg.FileBrowse(file_types=[('DeltaV Config Files','*.fhx')])],
         [sg.Button('Show Filters', key='-EXPAND-'), sg.Submit('Compare'), sg.Cancel()],
         [sg.Frame('Filters', filter_frame, visible=False, expand_x=True, key='-FILTERS-')]
         ]
-    window = sg.Window('Phase Compare', layout, size=(1000,150))
+    window = sg.Window('Phase Compare', layout, size=(750,150))
     while True:
         event, values = window.read()
         if event in (sg.WINDOW_CLOSED,"Cancel"):
@@ -32,12 +32,12 @@ def selectfiles():
                 window['-FILTERS-'].update(visible=True)
                 window['-EXPAND-'].update(text='Hide Filters')
                 flag = 1
-                window.size = (1000,250)
+                window.size = (750,250)
                 window.refresh()
             elif flag == 1:    
                 window['-FILTERS-'].update(visible=False)
                 window['-EXPAND-'].update(text='Show Filters')
-                window.size = (1000,150)
+                window.size = (750,150)
                 window.refresh()
                 flag = 0
         elif event == '-CONTEXT-' and values['-CONTEXT-'] and values['-CONTEXT-'][-1] not in ('0123456789'):

@@ -48,7 +48,7 @@ def setlayout(mode):
             [sg.FolderBrowse(enable_events=True,key='-BROWSE-')],
         ]
     layout.append([
-        [sg.Listbox(values=[], enable_events=True, horizontal_scroll=True, size=(80,10), key='-FILES-') ],
+        [sg.Listbox(values=[],horizontal_scroll=True, size=(80,10), key='-FILES-')],
         [sg.Submit('Start Count'), sg.Submit('Change Mode'), sg.Cancel()],
         ])
     return layout
