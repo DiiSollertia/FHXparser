@@ -10,9 +10,9 @@ def selectfiles():
         [sg.Text('No. of Context Lines:'), sg.Input('0', enable_events=True, key='-CONTEXT-')]
     ]
     layout = [
-        [sg.Text('Select 2 FHX files to compare.')],
-        [sg.Text('File 1'), sg.Input(disabled=True, size=(80,1), expand_x=True), sg.FileBrowse(file_types=[('DeltaV Config Files','*.fhx')])],
-        [sg.Text('File 2'), sg.Input(disabled=True, size=(80,1), expand_x=True), sg.FileBrowse(file_types=[('DeltaV Config Files','*.fhx')])],
+        [sg.Text('Select 2 FHX/CSV files to compare.')],
+        [sg.Text('File 1'), sg.Input(disabled=True, size=(80,1), expand_x=True), sg.FileBrowse(file_types=(('DeltaV Config Files','*.fhx'),))],
+        [sg.Text('File 2'), sg.Input(disabled=True, size=(80,1), expand_x=True), sg.FileBrowse(file_types=(('DeltaV Config Files','*.fhx'),))],
         [sg.Button('Show Filters', key='-EXPAND-'), sg.Submit('Compare'), sg.Cancel()],
         [sg.Frame('Filters', filter_frame, visible=False, expand_x=True, key='-FILTERS-')]
         ]
