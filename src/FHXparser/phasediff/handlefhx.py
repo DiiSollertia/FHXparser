@@ -1,6 +1,6 @@
 def filterread(params, file):
     lines = list()
-    with open(file,  'r', encoding='utf-16') as ff:
+    with open(file,  'r', encoding='utf', errors='replace') as ff:
         strippara = None
         filterpara = list()
         skipconf = 0
